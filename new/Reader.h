@@ -15,7 +15,7 @@ public:
 	Reader();
 	virtual ~Reader();
 
-	int readInput(string);
+	int processNumber(string);
 	bool inputIsValid(string);
 };
 

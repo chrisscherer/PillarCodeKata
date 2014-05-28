@@ -6,6 +6,7 @@
  */
 
 #include "Reader.h"
+#include "FaxNumber.h"
 #include <string>
 #include <numeric>
 #include <algorithm>
@@ -19,20 +20,21 @@ Reader::Reader() {
 Reader::~Reader() {
 }
 
-bool Reader::inputIsValid(string acctNum){
+bool Reader::inputIsValid(string faxNumber){
 
-	if (std::string::npos != acctNum.find_first_of("0123456789abcdefghijklmnopqrstuvwxyz"))
+	if (std::string::npos != faxNumber.find_first_of("0123456789abcdefghijklmnopqrstuvwxyz"))
 	{
 	  return false;
 	}
 	return true;
 };
 
-int Reader::readInput(string acctNum){
-	if(inputIsValid(acctNum) == false) return -1;
+int Reader::processNumber(string faxNumber){
+	if(inputIsValid(faxNumber) == false) return -1;
 
+	FaxNumber fNum;
 
-	return acctNum.length();
+	return faxNumber.length();
 }
 
 

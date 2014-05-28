@@ -5,16 +5,22 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../AllTests.cpp \
+../FaxNumber.cpp \
+../FaxNumberTest.cpp \
 ../Reader.cpp \
 ../ReaderTest.cpp 
 
 OBJS += \
 ./AllTests.o \
+./FaxNumber.o \
+./FaxNumberTest.o \
 ./Reader.o \
 ./ReaderTest.o 
 
 CPP_DEPS += \
 ./AllTests.d \
+./FaxNumber.d \
+./FaxNumberTest.d \
 ./Reader.d \
 ./ReaderTest.d 
 
