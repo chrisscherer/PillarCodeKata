@@ -7,6 +7,8 @@ CPP_SRCS += \
 ../AllTests.cpp \
 ../FaxNumber.cpp \
 ../FaxNumberTest.cpp \
+../NumberColumn.cpp \
+../NumberColumnTest.cpp \
 ../Reader.cpp \
 ../ReaderTest.cpp 
 
@@ -14,6 +16,8 @@ OBJS += \
 ./AllTests.o \
 ./FaxNumber.o \
 ./FaxNumberTest.o \
+./NumberColumn.o \
+./NumberColumnTest.o \
 ./Reader.o \
 ./ReaderTest.o 
 
@@ -21,6 +25,8 @@ CPP_DEPS += \
 ./AllTests.d \
 ./FaxNumber.d \
 ./FaxNumberTest.d \
+./NumberColumn.d \
+./NumberColumnTest.d \
 ./Reader.d \
 ./ReaderTest.d 
 

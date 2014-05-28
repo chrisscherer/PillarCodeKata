@@ -22,7 +22,7 @@ Reader::~Reader() {
 
 bool Reader::inputIsValid(string faxNumber){
 
-	if (std::string::npos != faxNumber.find_first_of("0123456789abcdefghijklmnopqrstuvwxyz"))
+	if (string::npos != faxNumber.find_first_of("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") || faxNumber.length() != 108)
 	{
 	  return false;
 	}
@@ -32,9 +32,11 @@ bool Reader::inputIsValid(string faxNumber){
 int Reader::processNumber(string faxNumber){
 	if(inputIsValid(faxNumber) == false) return -1;
 
-	FaxNumber fNum;
+	FaxNumber fNum(faxNumber);
 
-	return faxNumber.length();
+	return 0;
 }
+
+//"    _  _  _  _  _  _     _ |_||_|| || ||_   |  |  ||_   | _||_||_||_|  |  |  | _|                           "
 
 

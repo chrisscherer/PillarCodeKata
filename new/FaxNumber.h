@@ -14,7 +14,7 @@ using namespace std;
 
 class FaxNumber {
 public:
-	FaxNumber();
+	FaxNumber(string faxNumber);
 	virtual ~FaxNumber();
 
 	vector<int> possibleNums;
@@ -22,11 +22,14 @@ public:
 	vector<string> row2;
 	vector<string> row3;
 
+	int displayPossibilities();
+	void splitFaxNumber(string);
+
+private:
 	int splitCount;
 
-	int possibilities();
+	void updatePossibilities();
 	void setPossibilities();
-	void splitFaxNumber(string);
 };
 
 #endif /* FAXNUMBER_H_ */

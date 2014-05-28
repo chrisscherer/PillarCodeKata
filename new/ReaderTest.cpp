@@ -13,8 +13,8 @@ TEST_GROUP(Reader){
 };
 
 TEST(Reader, InitialStringIsAppropriateLength) {
-	CHECK(r.processNumber("    _  _     _  _  _  _  _  | _| _||_||_ |_   ||_||_|  ||_  _|  | _||_|  ||_| _|                             ") == 109);
-	CHECK(r.processNumber("    _  _     _  _  _  _  _  | _| _||_||_ |_   ||_||_|  ||_  _|  | _||_|  ||_| _|                            ") == 108);
+	CHECK(r.processNumber("    _  _     _  _  _  _  _  | _| _||_||_ |_   ||_||_|   f||_  _|  | _||_|  ||_| _|                             ") == -1);
+	CHECK(r.processNumber("    _  _     _  _  _  _  _  | _| _||_||_ |_   ||_||_|  ||_  _|  | _||_|  ||_| _|                            ") == 0);
 }
 TEST(Reader, ReaderChecksInputForValidCharacters) {
 	CHECK(r.inputIsValid("    _  _     _  _  _  _  _  | _f _||_||_ |_   ||_||_|  ||_  _|  | _||_|  ||_| _|                            ") == false);
