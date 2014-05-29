@@ -18,6 +18,7 @@ FaxNumber::FaxNumber(string faxNumber) {
 	this->row1.resize(9);
 	this->row2.resize(9);
 	this->row3.resize(9);
+//	this->accountNumberString;
 	this->accountNumber.resize(9);
 	this->splitFaxNumber(faxNumber);
 	this->faxToNumber();
@@ -78,6 +79,35 @@ int FaxNumber::faxToNumber(){
 	this->accountNumber.at(7) = nc8.possibleNumbers.at(0);
 	this->accountNumber.at(8) = nc9.possibleNumbers.at(0);
 
+//Trying to get illegibility working
+//	if(nc1.possibleNumbers.size() > 1){
+//		this->accountNumber.at(0) = -1;
+//	}
+//	if(nc2.possibleNumbers.size() > 1){
+//		this->accountNumber.at(1) = -1;
+//	}
+//	if(nc3.possibleNumbers.size() > 1){
+//		this->accountNumber.at(2) = -1;
+//	}
+//	if(nc4.possibleNumbers.size() > 1){
+//		this->accountNumber.at(3) = -1;
+//	}
+//	if(nc5.possibleNumbers.size() > 1){
+//		this->accountNumber.at(4) = -1;
+//	}
+//	if(nc6.possibleNumbers.size() > 1){
+//		this->accountNumber.at(5) = -1;
+//	}
+//	if(nc7.possibleNumbers.size() > 1){
+//		this->accountNumber.at(6) = -1;
+//	}
+//	if(nc8.possibleNumbers.size() > 1){
+//		this->accountNumber.at(7) = -1;
+//	}
+//	if(nc9.possibleNumbers.size() > 1){
+//		this->accountNumber.at(8) = -1;
+//	}
+
 	accountNumber += (nc1.possibleNumbers.at(0) * 100000000);
 	accountNumber += (nc2.possibleNumbers.at(0) * 10000000);
 	accountNumber += (nc3.possibleNumbers.at(0) * 1000000);
@@ -88,6 +118,15 @@ int FaxNumber::faxToNumber(){
 	accountNumber += (nc8.possibleNumbers.at(0) * 10);
 	accountNumber += (nc9.possibleNumbers.at(0));
 
+//Attempt at getting program to report illegible numbers
+//	for(int i=0;i<9;i++){
+//		if(this->accountNumber.at(i) == -1){
+//			this->accountNumberString += "?";
+//		}
+//		else{
+//			this->accountNumberString += std::to_string(this->accountNumber.at(i));
+//		}
+//	}
 	return accountNumber;
 };
 
@@ -102,6 +141,8 @@ bool FaxNumber::checkSum(){
 
 	if(sum % 11 == 0) return true;
 
+//if checksum is false, string is marked as an error
+//	this->accountNumberString += " ERR";
 	return false;
 };
 

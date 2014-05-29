@@ -30,9 +30,9 @@ bool Reader::inputIsValid(string faxNumber){
 };
 
 int Reader::processNumber(string faxNumber){
-	if(inputIsValid(faxNumber) == false) return -1;
-
 	FaxNumber fNum(faxNumber);
+
+	if(inputIsValid(faxNumber) == false && fNum.checkSum()) return -1;
 
 	return fNum.faxToNumber();
 }

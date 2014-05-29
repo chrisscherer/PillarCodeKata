@@ -17,6 +17,8 @@ public:
 	FaxNumber(string faxNumber);
 	virtual ~FaxNumber();
 
+//	string accountNumberString;
+
 	vector<int> possibleNums;
 	vector<int> accountNumber;
 	vector<string> row1;
