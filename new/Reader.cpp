@@ -34,9 +34,5 @@ int Reader::processNumber(string faxNumber){
 
 	FaxNumber fNum(faxNumber);
 
-	return 0;
+	return fNum.faxToNumber();
 }
-
-//"    _  _  _  _  _  _     _ |_||_|| || ||_   |  |  ||_   | _||_||_||_|  |  |  | _|                           "
-
-

@@ -102,7 +102,6 @@ void NumberColumn::updatePossibilities(){
 		this->possibleNumbers.erase(std::remove(this->possibleNumbers.begin(), this->possibleNumbers.end(), 0), this->possibleNumbers.end());
 		this->possibleNumbers.erase(std::remove(this->possibleNumbers.begin(), this->possibleNumbers.end(), 2), this->possibleNumbers.end());
 		this->possibleNumbers.erase(std::remove(this->possibleNumbers.begin(), this->possibleNumbers.end(), 3), this->possibleNumbers.end());
-		this->possibleNumbers.erase(std::remove(this->possibleNumbers.begin(), this->possibleNumbers.end(), 4), this->possibleNumbers.end());
 		this->possibleNumbers.erase(std::remove(this->possibleNumbers.begin(), this->possibleNumbers.end(), 5), this->possibleNumbers.end());
 		this->possibleNumbers.erase(std::remove(this->possibleNumbers.begin(), this->possibleNumbers.end(), 6), this->possibleNumbers.end());
 		this->possibleNumbers.erase(std::remove(this->possibleNumbers.begin(), this->possibleNumbers.end(), 8), this->possibleNumbers.end());

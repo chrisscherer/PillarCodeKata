@@ -13,9 +13,20 @@ using namespace std;
 
 TEST_GROUP(FaxNumberRows){
 	string hold = "    _  _     _  _  _  _  _  | _| _||_||_ |_   ||_||_|  ||_  _|  | _||_|  ||_| _|                            ";
+
 	//This next declaration is apparently causing memory leaks, but I can't find another way to create a new instance of the class
 	//and also assign it it's initial string
 	FaxNumber* fNum = new FaxNumber(hold);
+	void teardown(){
+		delete fNum;
+	}
+};
+TEST_GROUP(FaxNumberToAccountNumber){
+	string allNums = "    _  _     _  _  _  _  _   | _| _||_||_ |_   ||_||_|  ||_  _|  | _||_|  ||_| _|                           ";
+	FaxNumber* fNum = new FaxNumber(allNums);
+	void teardown(){
+		delete fNum;
+	}
 };
 
 TEST(FaxNumberRows, InitialSizeOfRowsIsNine){
@@ -54,5 +65,10 @@ TEST(FaxNumberRows, getRowsSplitsFaxNumberProperly){
 	CHECK(fNum->row3.at(6) == " ||");
 	CHECK(fNum->row3.at(7) == "_| ");
 	CHECK(fNum->row3.at(8) == "_| ");
-}
+};
+
+TEST(FaxNumberToAccountNumber, ProcessesAllNumbersCorrectly){
+	CHECK(fNum->faxToNumber() == 123456789);
+};
+
 

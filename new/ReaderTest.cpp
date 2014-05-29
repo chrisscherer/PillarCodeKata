@@ -11,10 +11,14 @@
 TEST_GROUP(Reader){
 	Reader r;
 };
+TEST_GROUP(ReaderToFaxNumber){
+	Reader r;
+
+};
 
 TEST(Reader, InitialStringIsAppropriateLength) {
-	CHECK(r.processNumber("    _  _     _  _  _  _  _  | _| _||_||_ |_   ||_||_|   f||_  _|  | _||_|  ||_| _|                             ") == -1);
-	CHECK(r.processNumber("    _  _     _  _  _  _  _  | _| _||_||_ |_   ||_||_|  ||_  _|  | _||_|  ||_| _|                            ") == 0);
+	CHECK(r.processNumber("    _  _  _  _  _  _     _ |_||_|| || ||_   |  |  ||_   |f  _||_||_||_|  |  |  | _|                           ") == -1);
+	CHECK(r.processNumber("    _  _  _  _  _  _     _ |_||_|| || ||_   |  |  ||_   | _||_||_||_|  |  |  | _|                           ") == 490067715);
 }
 TEST(Reader, ReaderChecksInputForValidCharacters) {
 	CHECK(r.inputIsValid("    _  _     _  _  _  _  _  | _f _||_||_ |_   ||_||_|  ||_  _|  | _||_|  ||_| _|                            ") == false);

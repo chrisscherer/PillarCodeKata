@@ -24,6 +24,7 @@ public:
 
 	int displayPossibilities();
 	void splitFaxNumber(string);
+	int faxToNumber();
 
 private:
 	int splitCount;
