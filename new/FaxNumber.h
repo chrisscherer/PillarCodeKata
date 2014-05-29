@@ -18,13 +18,17 @@ public:
 	virtual ~FaxNumber();
 
 	vector<int> possibleNums;
+	vector<int> accountNumber;
 	vector<string> row1;
 	vector<string> row2;
 	vector<string> row3;
 
 	int displayPossibilities();
-	void splitFaxNumber(string);
 	int faxToNumber();
+	bool checkSum();
+
+	void splitFaxNumber(string);
+
 
 private:
 	int splitCount;

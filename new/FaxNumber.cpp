@@ -18,7 +18,10 @@ FaxNumber::FaxNumber(string faxNumber) {
 	this->row1.resize(9);
 	this->row2.resize(9);
 	this->row3.resize(9);
+	this->accountNumber.resize(9);
 	this->splitFaxNumber(faxNumber);
+	this->faxToNumber();
+	this->checkSum();
 }
 
 FaxNumber::~FaxNumber() {
@@ -65,6 +68,16 @@ int FaxNumber::faxToNumber(){
 	nc8.updatePossibilities();
 	nc9.updatePossibilities();
 
+	this->accountNumber.at(0) = nc1.possibleNumbers.at(0);
+	this->accountNumber.at(1) = nc2.possibleNumbers.at(0);
+	this->accountNumber.at(2) = nc3.possibleNumbers.at(0);
+	this->accountNumber.at(3) = nc4.possibleNumbers.at(0);
+	this->accountNumber.at(4) = nc5.possibleNumbers.at(0);
+	this->accountNumber.at(5) = nc6.possibleNumbers.at(0);
+	this->accountNumber.at(6) = nc7.possibleNumbers.at(0);
+	this->accountNumber.at(7) = nc8.possibleNumbers.at(0);
+	this->accountNumber.at(8) = nc9.possibleNumbers.at(0);
+
 	accountNumber += (nc1.possibleNumbers.at(0) * 100000000);
 	accountNumber += (nc2.possibleNumbers.at(0) * 10000000);
 	accountNumber += (nc3.possibleNumbers.at(0) * 1000000);
@@ -76,4 +89,19 @@ int FaxNumber::faxToNumber(){
 	accountNumber += (nc9.possibleNumbers.at(0));
 
 	return accountNumber;
-}
+};
+
+bool FaxNumber::checkSum(){
+	int sum = 1;
+	int count = 2;
+	for(int i=7;i>=0;i--){
+		sum *= (this->accountNumber.at(i) + count);
+		count++;
+	}
+	sum *= this->accountNumber.at(8);
+
+	if(sum % 11 == 0) return true;
+
+	return false;
+};
+

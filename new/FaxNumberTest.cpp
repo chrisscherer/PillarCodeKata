@@ -28,6 +28,16 @@ TEST_GROUP(FaxNumberToAccountNumber){
 		delete fNum;
 	}
 };
+TEST_GROUP(FaxNumberCheckSum){
+	string invalid = " _  _  _  _  _  _  _  _    | || || || || || || ||_   ||_||_||_||_||_||_||_| _|  |                           ";
+	string valid = "    _  _  _  _  _  _     _ |_||_|| ||_||_   |  |  ||_   | _||_||_||_|  |  |  | _|                           ";
+	FaxNumber* fNumInvalid = new FaxNumber(invalid);
+	FaxNumber* fNumValid = new FaxNumber(valid);
+	void teardown(){
+		delete fNumInvalid;
+		delete fNumValid;
+	}
+};
 
 TEST(FaxNumberRows, InitialSizeOfRowsIsNine){
 	CHECK(fNum->row1.size() == 9);
@@ -69,6 +79,14 @@ TEST(FaxNumberRows, getRowsSplitsFaxNumberProperly){
 
 TEST(FaxNumberToAccountNumber, ProcessesAllNumbersCorrectly){
 	CHECK(fNum->faxToNumber() == 123456789);
+};
+
+TEST(FaxNumberCheckSum, ShouldReturnFalseIfGivenInvalidNumber){
+	CHECK(fNumInvalid->checkSum() == false);
+};
+
+TEST(FaxNumberCheckSum, ShouldReturnTrueIfGivenValidNumber){
+	CHECK(fNumValid->checkSum() == true);
 };
 
 
